@@ -1,0 +1,6 @@
+{
+    "mongoURI":"mongodb+srv://Kevin:animatrix1997@devcon-qyjha.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret":"simpleSecret",
+    "githubClientId":"7bc10630c6d331818b50",
+    "githubSecret":"2a271181b9ddd41ce65657e7be9212ce7d858388"
+}
