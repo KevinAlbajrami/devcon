@@ -17,8 +17,8 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
-  color: #333;
+  background-color: rgb(20, 19, 19);
+  color: #ccc;
 }
 
 a {
@@ -128,8 +128,8 @@ img {
 
 .btn {
   display: inline-block;
-  background: var(--light-color);
-  color: #333;
+  background: var(--dark-color);
+  color: #fff;
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
@@ -144,8 +144,8 @@ img {
   padding: 0.1rem;
   text-align: center;
   margin: 0.3rem;
-  background: var(--light-color);
-  color: #333;
+  background: var(--dark-color);
+  color: #fff;
 }
 
 .alert {
@@ -168,8 +168,8 @@ img {
 .bg-light,
 .badge-light,
 .alert-light {
-  background: var(--light-color);
-  color: #333;
+  background: var(--dark-color);
+  color: #fff;
 }
 
 .btn-dark,
@@ -200,9 +200,9 @@ img {
 .bg-white,
 .badge-white,
 .alert-white {
-  background: #fff;
-  color: #333;
-  border: #ccc solid 1px;
+  background: var(--dark-color);
+  color: #fff;
+  border: #fff solid 1px;
 }
 
 .btn:hover {
@@ -263,6 +263,10 @@ button {
   font: inherit;
 }
 
+.break {
+  white-space: pre-line;
+}
+
 .form .social-input {
   display: flex;
 }
@@ -295,7 +299,7 @@ button {
 }
 
 .table th {
-  background: var(--light-color);
+  background: var(--dark-color);
 }
 
 /* Navbar */
@@ -349,6 +353,11 @@ button {
   text-align: center;
 }
 
+.breaks {
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
 /* Profiles Page */
 .profile {
   display: grid;
@@ -366,8 +375,7 @@ button {
   grid-template-areas:
     'top top'
     'about about'
-    'exp edu'
-    'github github';
+    'exp edu';
   grid-gap: 1rem;
 }
 
@@ -435,28 +443,19 @@ button {
   margin: 0.5rem 0;
 }
 
-.profile-github {
-  grid-area: github;
-}
-
-.profile-github .repo {
-  display: flex;
-}
-
-.profile-github .repo > div:first-child {
-  flex: 7;
+.discussion {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  align-items: right;
   flex-basis: 70%;
 }
 
-.profile-github > div:last-child {
-  flex: 3;
-  flex-basis: 20%;
-}
 
 /* Posts Page */
 .post-form .post-form-header {
   background: var(--primary-color);
-  padding: 0.5rem;
+  background: var(--dark-color);
 }
 
 .post {
@@ -553,8 +552,7 @@ button {
       'top'
       'about'
       'exp'
-      'edu'
-      'github';
+      'edu';
   }
 
   .profile-about .skills {

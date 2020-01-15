@@ -15,18 +15,20 @@ const PostForm = ({ addPost }) => {
         className='form my-1'
         onSubmit={e => {
           e.preventDefault();
-          addPost({ text });
+          addPost({text});
           setText('');
         }}
       >
         <textarea
           name='text'
           cols='30'
-          rows='5'
+          rows='4'
           placeholder='Create a post'
+          wrap='hard'
           value={text}
           onChange={e => setText(e.target.value)}
           required
+          
         />
         <input type='submit' className='btn btn-dark my-1' value='Submit' />
       </form>

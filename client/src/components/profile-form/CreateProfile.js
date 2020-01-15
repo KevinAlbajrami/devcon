@@ -10,7 +10,6 @@ const CreateProfile = ({createProfile, history}) =>{
         location:'',
         status: '',
         skills:'',
-        githubUsername:'',
         bio:'',
         twitter:'',
         youtube:'',
@@ -25,7 +24,6 @@ const CreateProfile = ({createProfile, history}) =>{
         location,
         status,
         skills,
-        githubUsername,
         bio,
         twitter,
         youtube,
@@ -92,18 +90,6 @@ const CreateProfile = ({createProfile, history}) =>{
           <small className="form-text"
             >Please use comma separated values (eg.
             HTML,CSS,JavaScript,PHP)</small
-          >
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubUsername"
-            value ={githubUsername} onChange={e=>onChange(e)}
-          />
-          <small className="form-text"
-            >If you want your latest repos and a Github link, include your
-            username</small
           >
         </div>
         <div className="form-group">

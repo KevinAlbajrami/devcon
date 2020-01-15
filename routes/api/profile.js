@@ -49,7 +49,6 @@ async(req,res,next)=>{
         location,
         bio,
         status,
-        githubUsername,
         skills,
         youtube,
         facebook,
@@ -66,7 +65,6 @@ async(req,res,next)=>{
     if(location) profileFields.location=location;
     if(bio) profileFields.bio=bio;
     if(status) profileFields.status=status;
-    if(githubUsername) profileFields.githubUsername=githubUsername;
     if(skills){
         profileFields.skills=skills.split(',').map(skill=>skill.trim());
 
@@ -103,7 +101,7 @@ router.get('/',async(req,res)=>{
         res.json(profiles);
     }catch(err){
         console.error(err.message);
-        res.sendStatus(500).send('Server Error');
+        res.status(500).send('Server Error');
     }
 });
 //@route    GET api/profiles/user/:user_id
@@ -120,7 +118,7 @@ router.get('/user/:user_id',async(req,res)=>{
         if(err.kind=='ObjectId') {
             return res.status(400).json({msg:"Profile not found"});
         }
-        res.send(500).send('Server Error');
+        res.status(500).send('Server Error');
     }
 });
 //@route    DELETE api/profile
@@ -139,7 +137,7 @@ router.delete('/',auth,async(req,res)=>{
         res.json({msg: 'User removed'});
     }catch(err){
         console.error(err.message);
-        res.send(500).send('Server Error');
+        res.status(500).send('Server Error');
     }
 });
 //@route    PUT api/profile/experience
@@ -279,27 +277,4 @@ router.delete('/education/:edu_id',auth,async(req,res)=>{
         res.status(500).send('Server Error');
     }
 });
-//@route    Get api/profile/github/:username
-//@desc     Get user repos from github
-//@access   Public
-
-router.get('/github/:username', (req,res)=>{
-    try {
-        const options={
-            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
-            method: 'GET',
-            header:{'user-agent':'node.js'}        
-        }
-        request(options,(error,response,body)=>{
-            if(error) console.error(error);
-            if(response.statusCode!==200){
-                res.status(404).json({msg:"No Github profile found"});
-            }
-            res.json(JSON.parse(body));
-        });
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send("server error");    
-    }
-})
 module.exports=router;

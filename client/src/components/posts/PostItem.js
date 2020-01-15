@@ -18,7 +18,7 @@ const PostItem = ({addLike,removeLike,deletePost,auth,post:{_id,text,name,avatar
           </Link>
         </div>
         <div>
-          <p className="my-1">
+          <p className="breaks my-1">
             {text}
           </p>
            <p className="post-date">
@@ -33,9 +33,9 @@ Posted on <Moment format ='YYYY/MM/DD'>{date}</Moment>
             <i className="fas fa-thumbs-down"></i> {' '}
           </button>
           <Link to={`/posts/${_id}`} className="btn btn-primary">
-Discussion {comments.length>0 && (<span className='comment-count'>{comments.length}</span>)}
-          </Link>
-          {!auth.loading && user===auth.user._id && (
+              Discussion {comments.length>0 && (<span className='comment-count'>{comments.length}</span>)}
+          </Link> 
+          {!auth.loading && auth.user && user===auth.user._id && (
               <button onClick={()=>deletePost(_id)}   
               type="button"
               className="btn btn-danger"

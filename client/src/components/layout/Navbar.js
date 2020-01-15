@@ -22,16 +22,16 @@ const Navbar = ({auth:{isAuthenticated,loading},logout}) =>{
   );
   const guestLinks=(
     <ul>
-
-        <li><Link to="/profiles">Developers</Link></li>
+        <li><Link to="/posts">Posts</Link></li>
         <li><Link to="/register">Register</Link></li>
         <li><Link to="/login">Login</Link></li>
+       
       </ul>
   );
     return(
         <nav className="navbar bg-dark">
       <h1>
-        <Link to="/"><i className="fas fa-code"></i> DevConnector</Link>
+        <Link to="/"><i className="fas fa-code"></i> PostIn</Link>
       </h1>
       {
         !loading &&(<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)

@@ -7,7 +7,7 @@ import PostItem from '../posts/PostItem';
 import {Link} from 'react-router-dom';
 import CommentForm from '../post/CommentForm';
 import CommentItem from '../post/CommentItem'
-const Post = ({getPost,post:{post,loading},match})=>{
+const Post = ({getPost,auth:{isAuthenticated},post:{post,loading},match})=>{
     useEffect(()=>{
         getPost(match.params.id);
     },[getPost]);
@@ -16,8 +16,8 @@ const Post = ({getPost,post:{post,loading},match})=>{
             <Fragment>
                 <Link to='/posts' className='btn'>Back to posts</Link>
                 <PostItem post={post} showActions={false}></PostItem>
-                <CommentForm postId={post._id}/>
-                <div className='comments'>
+                {isAuthenticated && (<CommentForm postId={post._id}/>)}
+                <div>
                     {post.comments.map(comment=>(
                         <CommentItem key={comment._id} comment={comment} postId={post._id}/>
                         
@@ -32,10 +32,12 @@ const Post = ({getPost,post:{post,loading},match})=>{
 Post.propTypes= {
     getPost: PropTypes.func.isRequired,
     post:PropTypes.object.isRequired,
+    auth:PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state =>({
-    post:state.post
+    post:state.post,
+    auth:state.auth
 })
 
 export default connect(mapStateToProps,{getPost})(Post)
